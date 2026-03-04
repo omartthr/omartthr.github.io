@@ -38,6 +38,7 @@
             color: var(--text);
             overflow-x: hidden;
             cursor: none;
+            position: relative;
         }
 
         /* ── Custom Cursor ── */
@@ -145,23 +146,6 @@
             position: relative;
             overflow: hidden;
             text-align: center;
-            background: linear-gradient(-45deg, #080c12, #0d1420, #0a1128, #050814);
-            background-size: 400% 400%;
-            animation: heroDynamicBg 12s ease infinite;
-        }
-
-        @keyframes heroDynamicBg {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
         }
 
         /* Animated mesh background */
@@ -464,6 +448,49 @@
             }
         }
 
+        /* ── Soft Background Orbs ── */
+        .bg-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+        }
+
+        .bg-glow-1 {
+            top: 0;
+            left: 0;
+            background: var(--accent);
+            width: 600px;
+            height: 600px;
+        }
+
+        .bg-glow-2 {
+            top: 35%;
+            left: 100%;
+            background: var(--accent2);
+            width: 700px;
+            height: 700px;
+        }
+
+        .bg-glow-3 {
+            top: 70%;
+            left: 0%;
+            background: var(--accent3);
+            width: 600px;
+            height: 600px;
+        }
+
+        .bg-glow-4 {
+            top: 100%;
+            left: 100%;
+            background: var(--accent);
+            width: 800px;
+            height: 800px;
+        }
+
         /* ── Sections ── */
         section {
             padding: 120px 24px;
@@ -491,11 +518,11 @@
         }
 
         h2 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'DM Sans', sans-serif;
             font-size: clamp(2rem, 4.5vw, 2.5rem);
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.2;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
             margin-bottom: 40px;
         }
 
@@ -965,13 +992,38 @@
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .reveal.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) translateX(0);
         }
+
+        /* Slide from Left */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Slide from Right */
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
@@ -1025,6 +1077,12 @@
     <div class="cursor" id="cursor"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
+    <!-- Soft Background Orbs -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+    <div class="bg-glow bg-glow-4"></div>
+
     <!-- Navigation -->
     <nav>
         <a href="#about">Hakkımda</a>
@@ -1070,19 +1128,17 @@
         <h2 class="reveal">Hakkımda</h2>
 
         <div class="about-grid">
-            <div class="about-main reveal">
+            <div class="about-main reveal-left">
                 <p>
                     <strong>Ankara Üniversitesi Yazılım Mühendisliği</strong> öğrencisiyim.
-                    Web geliştirme, siber güvenlik ve yapay zeka destekli projeler üzerine
-                    yoğunlaşıyorum. Sosyal medya yönetimi ve içerik üretimi konularında
-                    deneyim sahibiyim.
+                    Web geliştirme ve siber güvenlik ile ilgili pentest alanlarda kendimi geliştiriyorum.
                 </p>
             </div>
-            <div class="stat-card reveal">
+            <div class="stat-card reveal-right" style="transition-delay: 0.1s">
                 <div class="stat-number">3.00</div>
                 <div class="stat-label">GPA / 4.00</div>
             </div>
-            <div class="stat-card reveal" style="transition-delay: 0.1s">
+            <div class="stat-card reveal-right" style="transition-delay: 0.2s">
                 <div class="stat-number">2+</div>
                 <div class="stat-label">Aktif Proje</div>
             </div>
@@ -1093,7 +1149,7 @@
     <section id="education">
         <h2 class="reveal">Eğitim</h2>
 
-        <div class="edu-card reveal">
+        <div class="edu-card reveal-left">
             <div class="edu-icon">🎓</div>
             <div class="edu-info">
                 <h3>Ankara Üniversitesi</h3>
@@ -1112,7 +1168,7 @@
         <h2 class="reveal">Yetenekler</h2>
 
         <div class="skills-container">
-            <div class="skill-group reveal">
+            <div class="skill-group reveal-left">
                 <div class="skill-group-title">Programlama Dilleri</div>
                 <div class="skills-row">
                     <span class="skill-chip lang"><i class="fab fa-python"></i> Python</span>
@@ -1121,7 +1177,7 @@
                     <span class="skill-chip lang"><i class="fab fa-js"></i> JavaScript</span>
                 </div>
             </div>
-            <div class="skill-group reveal" style="transition-delay: 0.1s">
+            <div class="skill-group reveal-right" style="transition-delay: 0.1s">
                 <div class="skill-group-title">Web & Framework</div>
                 <div class="skills-row">
                     <span class="skill-chip tool"><i class="fab fa-react"></i> React</span>
@@ -1129,12 +1185,11 @@
                     <span class="skill-chip tool"><i class="fab fa-css3-alt"></i> CSS</span>
                 </div>
             </div>
-            <div class="skill-group reveal" style="transition-delay: 0.2s">
+            <div class="skill-group reveal-left" style="transition-delay: 0.2s">
                 <div class="skill-group-title">Siber Güvenlik & Araçlar</div>
                 <div class="skills-row">
                     <span class="skill-chip sec"><i class="fab fa-linux"></i> Kali Linux</span>
                     <span class="skill-chip sec">Sızma Testi</span>
-                    <span class="skill-chip sec"><i class="fab fa-git-alt"></i> Git / GitHub</span>
                 </div>
             </div>
         </div>
@@ -1145,18 +1200,19 @@
         <h2 class="reveal">Projeler</h2>
 
         <div class="projects-grid">
-            <div class="project-card reveal">
+            <div class="project-card reveal-left">
                 <div class="project-badge"><i class="fas fa-flask"></i> TÜBİTAK 2209-A</div>
                 <h3>KurbanLink</h3>
-                <p>Yapay zeka destekli kurban alım-satım platformu. UI/UX tasarım ve Frontend geliştirme süreçlerinde
-                    aktif rol aldım.</p>
+                <p>Yapay zeka destekli kurban alım-satım platformunun UI/UX tasarım ve frontend geliştirme süreçlerinde
+                    aktif rol aldım. Proje kapsamında; kişiselleştirilmiş öneri sistemi, gelişmiş arama-filtreleme ve
+                    kurban ortaklığı modüllerinin tasarım stratejilerini oluşturarak planlama süreçlerini yönettik.</p>
                 <div class="project-footer">
                     <span class="project-role"><i class="fas fa-user-pen"></i> UI/UX · Frontend</span>
                     <div class="project-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </div>
 
-            <div class="project-card reveal" style="transition-delay: 0.1s">
+            <div class="project-card reveal-right" style="transition-delay: 0.1s">
                 <div class="project-badge"
                     style="color: var(--accent3); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.15);">
                     <i class="fas fa-calendar-check"></i> Web Uygulaması
@@ -1183,7 +1239,7 @@
             </a>
 
             <div class="social-links">
-                <a href="https://linkedin.com/in/omartaher" target="_blank" class="social-btn linkedin">
+                <a href="https://www.linkedin.com/in/omartaher-49728a330/" target="_blank" class="social-btn linkedin">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
                 <a href="https://github.com/omartthr" target="_blank" class="social-btn github">
@@ -1230,7 +1286,7 @@
         });
 
         // Scroll reveal
-        const reveals = document.querySelectorAll('.reveal');
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
         const observer = new IntersectionObserver(entries => {
             entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
