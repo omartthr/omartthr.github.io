@@ -37,45 +37,7 @@
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
-            cursor: none;
             position: relative;
-        }
-
-        /* ── Custom Cursor ── */
-        .cursor {
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease;
-            mix-blend-mode: screen;
-        }
-
-        .cursor-ring {
-            width: 36px;
-            height: 36px;
-            border: 1.5px solid rgba(0, 212, 255, 0.4);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .cursor.hovered {
-            transform: scale(2.5);
-        }
-
-        .cursor-ring.hovered {
-            transform: scale(1.8);
-            border-color: var(--accent);
         }
 
         /* ── Noise Texture Overlay ── */
@@ -449,13 +411,23 @@
         }
 
         /* ── Soft Background Orbs ── */
+        .bg-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
         .bg-glow {
             position: absolute;
             border-radius: 50%;
             filter: blur(140px);
             opacity: 0.15;
             pointer-events: none;
-            z-index: -1;
             transform: translate(-50%, -50%);
         }
 
@@ -1073,15 +1045,13 @@
 
 <body>
 
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
     <!-- Soft Background Orbs -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
-    <div class="bg-glow bg-glow-4"></div>
+    <div class="bg-wrapper">
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+        <div class="bg-glow bg-glow-3"></div>
+        <div class="bg-glow bg-glow-4"></div>
+    </div>
 
     <!-- Navigation -->
     <nav>
@@ -1254,37 +1224,6 @@
     </footer>
 
     <script>
-        // Custom cursor
-        const cursor = document.getElementById('cursor');
-        const ring = document.getElementById('cursorRing');
-        let mouseX = 0, mouseY = 0;
-        let ringX = 0, ringY = 0;
-
-        document.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.transform = `translate(${mouseX - 6}px, ${mouseY - 6}px)`;
-        });
-
-        function animateRing() {
-            ringX += (mouseX - ringX - 18) * 0.12;
-            ringY += (mouseY - ringY - 18) * 0.12;
-            ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-            requestAnimationFrame(animateRing);
-        }
-        animateRing();
-
-        document.querySelectorAll('a, button, .skill-chip, .project-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hovered');
-                ring.classList.add('hovered');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hovered');
-                ring.classList.remove('hovered');
-            });
-        });
-
         // Scroll reveal
         const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
         const observer = new IntersectionObserver(entries => {
