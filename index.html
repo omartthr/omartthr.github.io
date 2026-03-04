@@ -1000,18 +1000,26 @@
         /* ── Responsive ── */
         @media (max-width: 768px) {
             nav {
-                padding: 12px 16px;
-                gap: 6px;
+                padding: 10px 12px;
+                gap: 4px;
                 top: 12px;
-                width: 90%;
-                flex-wrap: wrap;
-                justify-content: center;
+                width: max-content;
+                max-width: 95vw;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
                 border-radius: 20px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            nav::-webkit-scrollbar {
+                display: none;
             }
 
             nav a {
-                padding: 6px 12px;
+                padding: 6px 8px;
                 font-size: 0.7rem;
+                white-space: nowrap;
             }
 
             .hero-name {
@@ -1055,10 +1063,12 @@
             }
 
             .contact-email {
-                font-size: 0.85rem;
-                padding: 14px 20px;
+                font-size: 0.8rem;
+                padding: 14px 16px;
                 width: 100%;
                 justify-content: center;
+                overflow-wrap: break-word;
+                word-break: break-word;
             }
 
             .social-links {
