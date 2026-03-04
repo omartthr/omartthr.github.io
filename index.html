@@ -278,15 +278,15 @@
 
         .hero-name {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(4rem, 10vw, 9rem);
+            font-size: clamp(3rem, 6vw, 5rem);
             font-weight: 800;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
             animation: fadeUp 0.8s 0.5s both;
         }
 
         .hero-name .line-1 {
-            display: block;
+            display: inline-block;
             background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.5) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -294,11 +294,12 @@
         }
 
         .hero-name .line-2 {
-            display: block;
+            display: inline-block;
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-left: 10px;
         }
 
         .hero-sub {
@@ -462,11 +463,11 @@
 
         h2 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 4.5vw, 2.5rem);
             font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 56px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 40px;
         }
 
         h2 .highlight {
@@ -1018,7 +1019,7 @@
                 <span class="line-1">OMAR</span>
                 <span class="line-2">TAHER</span>
             </h1>
-            <p class="hero-sub">Web Geliştirme &nbsp;·&nbsp; Siber Güvenlik &nbsp;·&nbsp; Yapay Zeka</p>
+            <p class="hero-sub">Web Geliştirme &nbsp;·&nbsp; Siber Güvenlik</p>
             <div class="hero-cta">
                 <a href="#projects" class="btn-primary">
                     <i class="fas fa-arrow-down"></i> Projeleri Gör
@@ -1037,8 +1038,7 @@
 
     <!-- About -->
     <section id="about">
-        <div class="section-label reveal">Hakkımda</div>
-        <h2 class="reveal">Merhaba, <span class="highlight">Omar</span> burada.</h2>
+        <h2 class="reveal">Hakkımda</h2>
 
         <div class="about-grid">
             <div class="about-main reveal">
@@ -1062,8 +1062,7 @@
 
     <!-- Education -->
     <section id="education">
-        <div class="section-label reveal">Eğitim</div>
-        <h2 class="reveal">Akademik <span class="highlight">Geçmiş</span></h2>
+        <h2 class="reveal">Eğitim</h2>
 
         <div class="edu-card reveal">
             <div class="edu-icon">🎓</div>
@@ -1081,8 +1080,7 @@
 
     <!-- Skills -->
     <section id="skills">
-        <div class="section-label reveal">Yetenekler</div>
-        <h2 class="reveal">Teknik <span class="highlight">Beceriler</span></h2>
+        <h2 class="reveal">Yetenekler</h2>
 
         <div class="skills-container">
             <div class="skill-group reveal">
@@ -1115,8 +1113,7 @@
 
     <!-- Projects -->
     <section id="projects">
-        <div class="section-label reveal">Projeler</div>
-        <h2 class="reveal">Neler <span class="highlight">Yaptım?</span></h2>
+        <h2 class="reveal">Projeler</h2>
 
         <div class="projects-grid">
             <div class="project-card reveal">
@@ -1148,8 +1145,7 @@
 
     <!-- Contact -->
     <section id="contact">
-        <div class="section-label reveal">İletişim</div>
-        <h2 class="reveal">Seninle <span class="highlight">Konuşalım</span></h2>
+        <h2 class="reveal">İletişim</h2>
 
         <div class="contact-wrapper reveal">
             <h3>Bir fikrin mi var?</h3>
