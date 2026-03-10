@@ -1741,13 +1741,26 @@ footer p {
     }
     
     .contact-card-wrapper {
-        padding: 40px 20px !important;
-        gap: 24px !important;
+        padding: 40px 16px !important;
+        gap: 20px !important;
     }
     
     .contact-card-wrapper p {
         font-size: 14px;
         padding: 0 10px;
+    }
+    
+    .contact-card-wrapper .skill-pill {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center;
+        padding: 14px 16px !important;
+        font-size: 14px !important;
+        box-sizing: border-box;
+    }
+    
+    .contact-card-wrapper a[href^="mailto"] {
+        word-break: break-all;
     }
     
     .btn-primary, .btn-outline {
