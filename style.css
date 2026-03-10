@@ -1461,7 +1461,7 @@ section {
     gap: 32px;
 }
 
-.contact-card-wrapper > .pill-cyan {
+.contact-card-wrapper>.pill-cyan {
     padding: 16px 32px;
     font-size: 18px;
     font-weight: 600;
@@ -1663,6 +1663,7 @@ footer p {
 
     .hero-left {
         grid-column: 1;
+        grid-row: 2;
         padding: 20px;
         text-align: center;
         align-items: center;
@@ -1687,6 +1688,7 @@ footer p {
 
     .hero-center {
         grid-column: 1;
+        grid-row: 3;
         padding: 20px 0;
         overflow: hidden;
     }
@@ -1716,6 +1718,7 @@ footer p {
 
     .hero-right {
         grid-column: 1;
+        grid-row: 4;
         flex-direction: column;
         border-left: none;
         border-top: 1px solid rgba(255, 255, 255, 0.04);
@@ -1800,7 +1803,7 @@ footer p {
     }
 
     /* Only the email pill should be full width on mobile */
-    .contact-card-wrapper > .pill-cyan {
+    .contact-card-wrapper>.pill-cyan {
         width: 100% !important;
         max-width: 100% !important;
         justify-content: center;
