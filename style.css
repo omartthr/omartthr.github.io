@@ -1448,6 +1448,50 @@ section {
     height: 120px;
 }
 
+/* Contact Card Utility */
+.contact-card-wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.contact-card-wrapper > .pill-cyan {
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 100px;
+    text-decoration: none;
+}
+
+.contact-social-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-social-row a.skill-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
 /* Footer */
 footer {
     position: relative;
@@ -1652,8 +1696,13 @@ footer p {
     }
 
     @keyframes orbitsEntranceScale {
-        0% { transform: rotateX(65deg) rotateY(-10deg) scale(0.2); }
-        100% { transform: rotateX(65deg) rotateY(-10deg) scale(0.45); }
+        0% {
+            transform: rotateX(65deg) rotateY(-10deg) scale(0.2);
+        }
+
+        100% {
+            transform: rotateX(65deg) rotateY(-10deg) scale(0.45);
+        }
     }
 
     .hero-swirl {
@@ -1674,7 +1723,7 @@ footer p {
         align-items: center;
         gap: 12px;
     }
-    
+
     .hero-btn {
         width: 100% !important;
         max-width: 280px;
@@ -1717,7 +1766,7 @@ footer p {
     .skills-grid {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
-    
+
     .skills-category-card {
         padding: 24px 20px;
     }
@@ -1725,45 +1774,51 @@ footer p {
     .scroll-hint {
         display: none;
     }
-    
+
     .section-heading {
         font-size: 32px !important;
     }
-    
+
     .edu-card-wrapper {
         padding: 20px !important;
     }
-    
+
     .edu-footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px !important;
     }
-    
+
     .contact-card-wrapper {
-        padding: 40px 16px !important;
-        gap: 20px !important;
+        padding: 40px 20px !important;
+        gap: 24px !important;
     }
-    
+
     .contact-card-wrapper p {
         font-size: 14px;
         padding: 0 10px;
     }
-    
-    .contact-card-wrapper .skill-pill {
+
+    /* Only the email pill should be full width on mobile */
+    .contact-card-wrapper > .pill-cyan {
         width: 100% !important;
         max-width: 100% !important;
         justify-content: center;
         padding: 14px 16px !important;
-        font-size: 14px !important;
+        font-size: 15px !important;
         box-sizing: border-box;
-    }
-    
-    .contact-card-wrapper a[href^="mailto"] {
         word-break: break-all;
     }
-    
-    .btn-primary, .btn-outline {
+
+    /* Social row keeps buttons side by side */
+    .contact-social-row {
+        gap: 12px;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .btn-primary,
+    .btn-outline {
         padding: 12px 24px;
         font-size: 13px !important;
     }
