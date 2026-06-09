@@ -24,9 +24,53 @@ html {
 body {
     background: var(--dark);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Sora', 'Noto Sans Arabic', sans-serif;
     overflow-x: hidden;
+}
 
+/* Arabic RTL — only text content, layout stays LTR */
+body.is-rtl .lang-ar,
+body.is-rtl p.lang-ar,
+body.is-rtl span.lang-ar,
+body.is-rtl h2.lang-ar,
+body.is-rtl h3.lang-ar,
+body.is-rtl h4.lang-ar {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    direction: rtl;
+    text-align: right;
+    line-height: 1.9;
+}
+
+body.is-rtl .hero-desc-text.lang-ar,
+body.is-rtl .hero-desc-label.lang-ar {
+    text-align: center;
+    direction: rtl;
+}
+
+body.is-rtl .about-text p.lang-ar {
+    text-align: right;
+}
+
+body.is-rtl .project-desc.lang-ar {
+    text-align: right;
+}
+
+body.is-rtl .section-title.lang-ar,
+body.is-rtl .section-label.lang-ar {
+    text-align: left;
+    direction: ltr;
+}
+
+body.is-rtl .project-repo-note p.lang-ar {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Skill pill & badge text in Arabic */
+body.is-rtl .skills-category-title.lang-ar {
+    text-align: right;
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', sans-serif;
 }
 
 /* Noise texture overlay */
@@ -115,6 +159,7 @@ nav::before {
     padding: 4px;
     gap: 2px;
     isolation: isolate;
+    direction: ltr;
 }
 
 .lang-toggle::before {
@@ -883,10 +928,10 @@ nav::before {
     gap: 8px;
     background: linear-gradient(135deg, var(--cyan), var(--blue));
     color: #000;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
     padding: 14px 28px;
     border: none;
     border-radius: 100px;
@@ -907,7 +952,7 @@ nav::before {
     gap: 8px;
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -1718,13 +1763,14 @@ footer p {
         height: auto;
         min-height: 0;
         padding-bottom: 40px;
+        overflow-x: hidden;
     }
 
     .hero-top {
         padding: 20px 16px 12px;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
     }
 
     .hero-top-nav {
@@ -1734,44 +1780,61 @@ footer p {
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
-        gap: 4px;
+        gap: 2px;
+        padding: 4px 6px;
     }
 
     .hero-top-nav a {
-        padding: 6px 12px;
-        font-size: 10px;
+        padding: 6px 10px;
+        font-size: 9.5px;
+        letter-spacing: 0.08em;
     }
 
     .hero-top-icons {
         margin: 0 auto;
     }
 
+    /* Lang toggle — keep compact on mobile */
+    .lang-toggle {
+        position: relative;
+        right: auto;
+        margin-right: 0;
+    }
+
+    .lang-toggle button {
+        padding: 5px 8px;
+        font-size: 10px;
+    }
+
     .hero-left {
         grid-column: 1;
         grid-row: 2;
-        padding: 20px 20px 0;
+        padding: 24px 20px 0;
         text-align: center;
         align-items: center;
     }
 
     .hero-title {
-        font-size: clamp(52px, 16vw, 80px);
+        font-size: clamp(52px, 15vw, 80px);
     }
 
     .hero-desc-row {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 4px;
     }
 
     .hero-desc-label {
         white-space: normal;
         text-align: center;
         font-size: 9px;
+        letter-spacing: 0.08em;
     }
 
     .hero-desc-text {
         margin: 0 auto;
         text-align: center;
+        max-width: 100%;
     }
 
     .hero-mini-links {
@@ -1781,22 +1844,29 @@ footer p {
     .hero-center {
         grid-column: 1;
         grid-row: 3;
-        padding: 10px 0;
+        padding: 0;
         overflow: hidden;
-        min-height: 260px;
+        height: 240px;
+        min-height: unset;
+        width: 100%;
+    }
+
+    .hero-character-container {
+        width: 100%;
+        height: 100%;
     }
 
     .hero-orbits {
-        transform: rotateX(65deg) rotateY(-10deg) scale(0.42);
+        transform: rotateX(65deg) rotateY(-10deg) scale(0.38);
     }
 
     @keyframes orbitsEntranceScale {
-        0%   { transform: rotateX(65deg) rotateY(-10deg) scale(0.2); }
-        100% { transform: rotateX(65deg) rotateY(-10deg) scale(0.42); }
+        0%   { transform: rotateX(65deg) rotateY(-10deg) scale(0.15); }
+        100% { transform: rotateX(65deg) rotateY(-10deg) scale(0.38); }
     }
 
     .hero-character-img {
-        width: 160px;
+        width: 150px;
     }
 
     .hero-right {
@@ -1812,65 +1882,94 @@ footer p {
     .hero-btn {
         width: 100% !important;
         max-width: 300px;
+        justify-content: center;
     }
 
-    .hero-sidebar-divider {
-        display: none;
-    }
-
-    .hero-bottom {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .hero-brand {
-        font-size: 28px;
-    }
+    .hero-sidebar-divider { display: none; }
+    .hero-bottom { flex-direction: column; gap: 20px; padding: 20px; }
+    .hero-brand  { font-size: 28px; }
+    .scroll-hint { display: none; }
 
     section {
-        padding: 60px 16px;
+        padding: 56px 16px;
     }
 
+    /* About */
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 24px;
+    }
+
+    /* The terminal block — prevent overflow */
+    .about-grid > div:last-child {
+        overflow: hidden;
+        word-break: break-word;
+    }
+
+    .about-grid > div:last-child > div:last-child {
+        font-size: 11px !important;
+        word-break: break-all;
+        overflow-wrap: break-word;
     }
 
     .stat-row {
-        gap: 24px;
+        gap: 20px;
         flex-wrap: wrap;
     }
 
-    .contact-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    .stat-num {
+        font-size: 40px;
     }
 
+    /* Education */
+    .edu-card-wrapper { padding: 20px !important; }
+    .edu-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px !important;
+    }
+    .edu-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 16px;
+    }
+    .edu-meta-row {
+        gap: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Projects */
     .projects-grid {
         grid-template-columns: 1fr;
-        margin-top: 32px;
+        margin-top: 28px;
+        gap: 16px;
     }
 
     .project-card.dynamo-glass {
-        padding: 24px 20px;
+        padding: 22px 18px;
     }
 
+    .project-roles {
+        font-size: 11px;
+        flex-wrap: wrap;
+        gap: 4px;
+        max-width: calc(100% - 44px);
+    }
+
+    /* Skills */
     .skills-category-card {
-        padding: 20px 16px;
+        padding: 18px 14px;
     }
 
     .skills-tags-wrap {
-        gap: 10px;
+        gap: 8px;
     }
 
     .skill-pill {
-        padding: 7px 14px;
-        font-size: 13px;
-    }
-
-    .scroll-hint {
-        display: none;
+        padding: 6px 12px;
+        font-size: 12px;
     }
 
     .section-heading {
@@ -1878,67 +1977,43 @@ footer p {
     }
 
     .section-title {
-        font-size: clamp(36px, 10vw, 56px);
+        font-size: clamp(34px, 10vw, 54px);
     }
 
-    .edu-card-wrapper {
-        padding: 20px !important;
-    }
-
-    .edu-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px !important;
-    }
-
-    .edu-card {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 24px;
-        gap: 16px;
-    }
-
-    .edu-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-    }
-
-    .edu-meta-row {
-        gap: 16px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    /* Contact */
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
 
     .contact-card-wrapper {
-        padding: 36px 16px !important;
-        gap: 20px !important;
+        padding: 32px 14px !important;
+        gap: 18px !important;
     }
 
     .contact-card-wrapper p {
-        font-size: 13px;
-        padding: 0 8px;
+        font-size: 12px;
+        padding: 0 4px;
     }
 
     .contact-card-wrapper > .pill-cyan {
         width: 100% !important;
         max-width: 100% !important;
         justify-content: center;
-        padding: 14px 12px !important;
-        font-size: 14px !important;
+        padding: 13px 10px !important;
+        font-size: 13px !important;
         box-sizing: border-box;
         word-break: break-all;
+        overflow-wrap: break-word;
     }
 
     .contact-social-row {
-        gap: 12px;
+        gap: 10px;
         flex-direction: row;
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     .btn-primary,
     .btn-outline {
-        padding: 12px 22px;
+        padding: 12px 20px;
         font-size: 13px !important;
     }
 }
@@ -1946,12 +2021,33 @@ footer p {
 /* ─── Small phones (480px) ─── */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: clamp(48px, 18vw, 68px);
+        font-size: clamp(46px, 17vw, 66px);
+    }
+
+    .hero-top-nav {
+        gap: 1px;
     }
 
     .hero-top-nav a {
-        padding: 5px 10px;
+        padding: 5px 8px;
         font-size: 9px;
+    }
+
+    .hero-center {
+        height: 210px;
+    }
+
+    .hero-orbits {
+        transform: rotateX(65deg) rotateY(-10deg) scale(0.32);
+    }
+
+    @keyframes orbitsEntranceScale {
+        0%   { transform: rotateX(65deg) rotateY(-10deg) scale(0.12); }
+        100% { transform: rotateX(65deg) rotateY(-10deg) scale(0.32); }
+    }
+
+    .hero-character-img {
+        width: 130px;
     }
 
     .stat-row {
@@ -1959,26 +2055,30 @@ footer p {
     }
 
     .stat-num {
-        font-size: 36px;
-    }
-
-    .project-roles {
-        font-size: 11px;
-        flex-wrap: wrap;
-        gap: 4px;
+        font-size: 34px;
     }
 
     .projects-grid {
-        gap: 16px;
+        gap: 12px;
     }
 
     .section-title {
-        font-size: clamp(32px, 12vw, 48px);
+        font-size: clamp(30px, 11vw, 46px);
     }
 
     .contact-card-wrapper > .pill-cyan {
-        font-size: 12px !important;
-        padding: 12px 10px !important;
+        font-size: 11px !important;
+        padding: 11px 8px !important;
+    }
+
+    .skills-category-card {
+        padding: 16px 12px;
+    }
+
+    .skill-pill {
+        padding: 5px 10px;
+        font-size: 11px;
+        gap: 7px;
     }
 }
 

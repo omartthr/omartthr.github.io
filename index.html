@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omar Taher — Yazılım Mühendisi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;800&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;800&family=Sora:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -207,14 +208,14 @@
         <!-- ═══ RIGHT SIDEBAR ═══ -->
         <div class="hero-right" style="gap: 16px;">
             <a href="#projects" class="btn-primary hero-btn"
-                style="justify-content: center; text-transform:none; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0;">
+                style="justify-content: center; text-transform:none; font-family: 'Sora', sans-serif; font-weight: 500; letter-spacing: 0;">
                 <span style="font-size:18px;">↓</span>
                 <span class="lang-tr">Projeleri Gör</span>
                 <span class="lang-en" style="display:none">View Projects</span>
                 <span class="lang-ar" style="display:none">عرض المشاريع</span>
             </a>
             <a href="#contact" class="btn-outline hero-btn"
-                style="justify-content: center; text-transform:none; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0;">
+                style="justify-content: center; text-transform:none; font-family: 'Sora', sans-serif; font-weight: 500; letter-spacing: 0;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"
                     style="margin-right: -2px;">
                     <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" fill="none" stroke-width="2"
@@ -810,10 +811,14 @@
         function setLang(lang) {
             localStorage.setItem('cv_lang', lang);
             document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            // Layout always stays LTR — only text content gets RTL treatment via CSS class
+            document.documentElement.dir = 'ltr';
+            document.body.classList.toggle('is-rtl', lang === 'ar');
+
             document.querySelectorAll('.lang-tr').forEach(el => el.style.display = lang === 'tr' ? '' : 'none');
             document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
             document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang === 'ar' ? '' : 'none');
+
             // Sync buttons
             const toggles = document.querySelectorAll('.lang-toggle');
             toggles.forEach(toggle => {
